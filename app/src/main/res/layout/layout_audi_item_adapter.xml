@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/commonColorBackgroundBlack">
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/audiGuideLineTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/audiGuideLineStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/audiGuideLineEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/audiGuideLineBottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="16dp"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/audiItemImLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            app:layout_constraintBottom_toBottomOf="@+id/audiItemTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@mipmap/ic_launcher" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/audiItemTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Q2 - En route to myself"
+            android:textColor="@color/commonColorTextWhite"
+            android:textSize="@dimen/sizeFont20"
+            app:layout_constraintBottom_toTopOf="@+id/audiItemDate"
+            app:layout_constraintEnd_toStartOf="@+id/audiGuideLineEnd"
+            app:layout_constraintStart_toEndOf="@+id/audiGuideLineStart"
+            app:layout_constraintTop_toBottomOf="@+id/audiGuideLineTop" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/audiItemDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="29 November 2017, 15:13"
+            android:textColor="@color/commonColorTextGrey"
+            android:textSize="@dimen/sizeFont14"
+            app:layout_constraintBottom_toTopOf="@+id/audiItemIngress"
+            app:layout_constraintEnd_toStartOf="@+id/audiGuideLineEnd"
+            app:layout_constraintStart_toEndOf="@+id/audiGuideLineStart"
+            app:layout_constraintTop_toBottomOf="@+id/audiItemTitle" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/audiItemIngress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="The Audi Q7 is the result of an ambitious idea: never cease to improve."
+            android:textColor="@color/commonColorTextWhite"
+            android:textSize="@dimen/sizeFont14"
+            app:layout_constraintBottom_toTopOf="@+id/audiGuideLineBottom"
+            app:layout_constraintStart_toEndOf="@+id/audiGuideLineStart"
+            app:layout_constraintEnd_toStartOf="@+id/audiGuideLineEnd"
+            app:layout_constraintTop_toBottomOf="@+id/audiItemDate" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
