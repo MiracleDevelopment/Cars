@@ -16,7 +16,7 @@ class MapperCarsImpl : MapperCars<ArrayList<ListCarsContent>, ArrayList<BaseCars
         item.id,
         item.title,
         item.image,
-        item.dateTime,
+        item.created,
         item.ingress
       )
 

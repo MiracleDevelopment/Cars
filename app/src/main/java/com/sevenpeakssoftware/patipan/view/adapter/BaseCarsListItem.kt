@@ -9,7 +9,7 @@ data class CarsListItem(
   val itemId: Int? = null,
   val title: String? = null,
   val image: String? = null,
-  val publishDate: String? = null,
+  val publishDate: Long? = null,
   val ingress: String? = null
 ) : BaseCarsListItem {
   override fun itemId(): Int? = itemId

@@ -2,6 +2,7 @@ package com.sevenpeakssoftware.patipan.view.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.sevenpeakssoftware.patipan.common.SingleLiveEvent
 import com.sevenpeakssoftware.patipan.model.ListCarsResponse
 import com.sevenpeakssoftware.patipan.shared.Result
 import com.sevenpeakssoftware.patipan.shared.base.BaseDisposableSingle
@@ -17,10 +18,10 @@ class CarsListScreenViewModel(
 
   private val mutableCarsResponse: MutableLiveData<ArrayList<BaseCarsListItem>> = MutableLiveData()
 
-  private val mutableCarsListLiveData: MutableLiveData<Result<ListCarsResponse>> = MutableLiveData()
+  private val singleCarsListLiveData: SingleLiveEvent<Result<ListCarsResponse>> = SingleLiveEvent()
 
   fun executeCarsList() {
-    carsUseCase.execute(CarsDisposable(mutableCarsListLiveData), Unit)
+    carsUseCase.execute(CarsDisposable(singleCarsListLiveData), Unit)
   }
 
   fun setItemsCarsList(listCars: ListCarsResponse) {
@@ -29,11 +30,11 @@ class CarsListScreenViewModel(
     mutableCarsResponse.value = listCarsResponse
   }
 
-  fun observeCarsList() = mutableCarsListLiveData
+  fun observeCarsList() = singleCarsListLiveData
   fun observeCarsResponse() = mutableCarsResponse
 
 
-  inner class CarsDisposable(private val liveData: MutableLiveData<Result<ListCarsResponse>>) :
+  inner class CarsDisposable(private val liveData: SingleLiveEvent<Result<ListCarsResponse>>) :
     BaseDisposableSingle<ListCarsResponse>() {
     override fun onSuccess(success: Result<ListCarsResponse>) {
       liveData.value = success

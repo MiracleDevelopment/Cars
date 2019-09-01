@@ -23,6 +23,15 @@ class CarsListScreenFragment : BaseFragment() {
   private val carsListScreenViewModel: CarsListScreenViewModel by viewModel()
   private val carsListAdapter: CarsListAdapter by inject { parametersOf() }
 
+
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+
+    savedInstanceState ?: run {
+      carsListScreenViewModel.executeCarsList()
+    }
+  }
+
   override fun onCreateView(
     inflater: LayoutInflater,
     container: ViewGroup?,
@@ -46,22 +55,16 @@ class CarsListScreenFragment : BaseFragment() {
 
   private fun setObserve() {
     carsListScreenViewModel.observeCarsList().observe(this, Observer {
-      it.success({listCars->
+      it.success({ listCars ->
         carsListScreenViewModel.setItemsCarsList(listCars)
-      },{error->
-        Toast.makeText(context,"${error.message}",Toast.LENGTH_LONG).show()
+      }, { error ->
+        Toast.makeText(context, "${error.message}", Toast.LENGTH_LONG).show()
       })
     })
-
 
     carsListScreenViewModel.observeCarsResponse().observe(this, Observer {
       carsListAdapter.addItemCarsList(it)
     })
-  }
-
-  override fun onStart() {
-    super.onStart()
-    carsListScreenViewModel.executeCarsList()
   }
 
   companion object {

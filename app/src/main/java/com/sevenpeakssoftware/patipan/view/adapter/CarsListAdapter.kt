@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.sevenpeakssoftware.patipan.R
+import com.sevenpeakssoftware.patipan.getDateFormat
 import com.sevenpeakssoftware.patipan.loadPhotoWithGlide
 import kotlinx.android.synthetic.main.layout_audi_item_adapter.view.*
 import java.lang.IllegalStateException
@@ -62,6 +63,7 @@ class CarsListAdapter : ListAdapter<BaseCarsListItem, RecyclerView.ViewHolder>(C
         audiItemTitle.text = items.title
         audiItemIngress.text = items.ingress
 
+        audiItemDate.text = getDateFormat(items.publishDate) ?: "-"
         loadPhotoWithGlide(context, items.image, audiItemImLogo)
       }
     }
@@ -73,7 +75,11 @@ class CarsListAdapter : ListAdapter<BaseCarsListItem, RecyclerView.ViewHolder>(C
     }
 
     override fun areContentsTheSame(oldItem: BaseCarsListItem, newItem: BaseCarsListItem): Boolean {
-      return false
+      return if (oldItem is CarsListItem && newItem is CarsListItem) {
+        oldItem.itemId == newItem.itemId
+      } else {
+        true
+      }
     }
   }
 }
