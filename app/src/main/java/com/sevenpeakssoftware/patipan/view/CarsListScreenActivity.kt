@@ -20,6 +20,10 @@ class CarsListScreenActivity : BaseAppCompatActivity() {
     setSupportActionBar(carsListScreenToolbar)
   }
 
+  fun setOnNetWorkCallBackFromFragment(onNetWorkCallBack: OnNetWorkCallBack){
+    setNetWorkCallBackListener(onNetWorkCallBack)
+  }
+
   private fun setFragment(savedInstanceState: Bundle?) {
     savedInstanceState ?: run {
       replaceFragment(
@@ -30,5 +34,4 @@ class CarsListScreenActivity : BaseAppCompatActivity() {
       )
     }
   }
-
 }

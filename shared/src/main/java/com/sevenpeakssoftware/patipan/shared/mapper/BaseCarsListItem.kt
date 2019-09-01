@@ -1,4 +1,4 @@
-package com.sevenpeakssoftware.patipan.view.adapter
+package com.sevenpeakssoftware.patipan.shared.mapper
 
 interface BaseCarsListItem {
   fun itemId(): Int?

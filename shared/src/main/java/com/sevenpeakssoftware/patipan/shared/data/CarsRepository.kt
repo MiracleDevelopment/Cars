@@ -1,8 +1,8 @@
 package com.sevenpeakssoftware.patipan.shared.data
 
-import com.sevenpeakssoftware.patipan.model.ListCarsResponse
+import com.sevenpeakssoftware.patipan.shared.mapper.BaseCarsListItem
 import io.reactivex.Single
 
 interface CarsRepository {
-  fun getListCars() : Single<ListCarsResponse>
+  fun getListCars(isConnected : Boolean): Single<ArrayList<BaseCarsListItem>>
 }

@@ -9,6 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sevenpeakssoftware.patipan.R
 import com.sevenpeakssoftware.patipan.getDateFormat
 import com.sevenpeakssoftware.patipan.loadPhotoWithGlide
+import com.sevenpeakssoftware.patipan.shared.mapper.BaseCarsListItem
+import com.sevenpeakssoftware.patipan.shared.mapper.CarsItemViewType
+import com.sevenpeakssoftware.patipan.shared.mapper.CarsListItem
 import kotlinx.android.synthetic.main.layout_audi_item_adapter.view.*
 import java.lang.IllegalStateException
 
@@ -76,7 +79,7 @@ class CarsListAdapter : ListAdapter<BaseCarsListItem, RecyclerView.ViewHolder>(C
 
     override fun areContentsTheSame(oldItem: BaseCarsListItem, newItem: BaseCarsListItem): Boolean {
       return if (oldItem is CarsListItem && newItem is CarsListItem) {
-        oldItem.itemId == newItem.itemId
+        oldItem.itemId == newItem.itemId && oldItem.id == newItem.id
       } else {
         true
       }
