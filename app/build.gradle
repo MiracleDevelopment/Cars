@@ -36,6 +36,10 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:2.0.0"
     testImplementation "androidx.arch.core:core-testing:2.0.1"
 
+
+    //RecyclerView
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+
     //Koin Injection
     implementation "org.koin:koin-core:2.0.1"
     implementation "org.koin:koin-core-ext:2.0.1"
