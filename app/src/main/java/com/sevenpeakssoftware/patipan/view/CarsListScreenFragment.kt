@@ -15,7 +15,7 @@ import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
 class CarsListScreenFragment : BaseFragment() {
-  private val carsListAdater: CarsListAdapter by inject { parametersOf() }
+  private val carsListAdapter: CarsListAdapter by inject { parametersOf() }
 
   override fun onCreateView(
     inflater: LayoutInflater,
@@ -34,9 +34,9 @@ class CarsListScreenFragment : BaseFragment() {
     carsListScreenFragmentRecyclerView.layoutManager =
       LinearLayoutManager(context, RecyclerView.VERTICAL, false)
     carsListScreenFragmentRecyclerView.itemAnimator = DefaultItemAnimator()
-    carsListScreenFragmentRecyclerView.adapter = carsListAdater
+    carsListScreenFragmentRecyclerView.adapter = carsListAdapter
 
-    carsListAdater.addItemCarsList(arrayListOf())
+    carsListAdapter.addItemCarsList(arrayListOf())
   }
 
   companion object {
