@@ -3,7 +3,9 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/commonColorBackgroundBlack">
+        android:background="@color/commonColorBackgroundBlack"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/padding16">
 
     <androidx.constraintlayout.widget.Guideline
             android:id="@+id/audiGuideLineTop"
@@ -26,42 +28,47 @@
             android:orientation="vertical"
             app:layout_constraintGuide_end="16dp" />
 
-    <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/audiGuideLineBottom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_end="16dp"/>
-
     <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/audiItemImLogo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            app:layout_constraintBottom_toBottomOf="@+id/audiItemTitle"
+            android:layout_width="0dp"
+            android:scaleType="centerCrop"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@mipmap/ic_launcher" />
 
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/audiItemImOverlay"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/shape_overlay"
+            app:layout_constraintBottom_toBottomOf="@+id/audiItemImLogo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/audiItemImLogo" />
+
     <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/audiItemTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin16"
             android:text="Q2 - En route to myself"
             android:textColor="@color/commonColorTextWhite"
             android:textSize="@dimen/sizeFont20"
+            android:layout_marginTop="@dimen/margin8"
             app:layout_constraintBottom_toTopOf="@+id/audiItemDate"
             app:layout_constraintEnd_toStartOf="@+id/audiGuideLineEnd"
             app:layout_constraintStart_toEndOf="@+id/audiGuideLineStart"
-            app:layout_constraintTop_toBottomOf="@+id/audiGuideLineTop" />
+            app:layout_constraintTop_toBottomOf="@+id/audiGuideLineTop"
+            app:layout_constraintVertical_bias="0" />
 
     <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/audiItemDate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin16"
+            android:layout_marginTop="@dimen/margin8"
             android:text="29 November 2017, 15:13"
             android:textColor="@color/commonColorTextGrey"
             android:textSize="@dimen/sizeFont14"
@@ -74,13 +81,13 @@
             android:id="@+id/audiItemIngress"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin16"
+            android:layout_marginTop="@dimen/margin8"
             android:text="The Audi Q7 is the result of an ambitious idea: never cease to improve."
             android:textColor="@color/commonColorTextWhite"
             android:textSize="@dimen/sizeFont14"
-            app:layout_constraintBottom_toTopOf="@+id/audiGuideLineBottom"
-            app:layout_constraintStart_toEndOf="@+id/audiGuideLineStart"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/audiGuideLineEnd"
+            app:layout_constraintStart_toEndOf="@+id/audiGuideLineStart"
             app:layout_constraintTop_toBottomOf="@+id/audiItemDate" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
