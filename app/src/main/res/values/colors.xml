@@ -9,4 +9,5 @@
 
     <color name="commonColorTextWhite">#ffffff</color>
     <color name="commonColorTextGrey">#acacac</color>
+    <color name="commonColorTextBlack">#000000</color>
 </resources>

@@ -9,6 +9,11 @@ class MapperCarsImpl : MapperCars<ArrayList<RoomCarsItem>, ArrayList<BaseCarsLis
 
     val listCarsItem: ArrayList<BaseCarsListItem> = arrayListOf()
 
+    if (items.isEmpty() &&items.count() <=0 ) {
+      listCarsItem.add(EmptyItem(-1))
+      return listCarsItem
+    }
+
     items.forEachIndexed { _, item ->
       val carsItems = CarsListItem(
         itemId = item.itemId,

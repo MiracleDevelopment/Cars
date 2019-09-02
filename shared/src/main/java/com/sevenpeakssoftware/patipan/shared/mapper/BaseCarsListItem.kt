@@ -15,7 +15,12 @@ data class CarsListItem(
   override fun itemId(): Int? = itemId
 }
 
+data class EmptyItem(val id: Int? = null) : BaseCarsListItem {
+  override fun itemId(): Int?  = id
+}
+
 
 object CarsItemViewType {
   const val audi: Int = 0
+  const val emptyView: Int = 1
 }

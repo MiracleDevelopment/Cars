@@ -17,7 +17,7 @@ class CarsListScreenViewModel(
 
   private val mutableCarsResponse: MutableLiveData<ArrayList<BaseCarsListItem>> = MutableLiveData()
 
-  private val singleCarsListLiveData: MutableLiveData<Result<ArrayList<BaseCarsListItem>>> =
+  private val singleCarsListLiveData: SingleLiveEvent<Result<ArrayList<BaseCarsListItem>>> =
     SingleLiveEvent()
 
   fun executeCarsList(isConnected: Boolean) {
@@ -26,18 +26,19 @@ class CarsListScreenViewModel(
 
   fun setItemsCarsList(listCars: ArrayList<BaseCarsListItem>) {
     onClearList()
+
     listCarsResponse.addAll(listCars)
     mutableCarsResponse.value = listCarsResponse
   }
 
   private fun onClearList() {
-    listCarsResponse.clear()
+    if (!listCarsResponse.isNullOrEmpty()) listCarsResponse.clear()
   }
 
   fun observeCarsList() = singleCarsListLiveData
   fun observeCarsResponse() = mutableCarsResponse
 
-  class CarsDisposable(private val liveData: MutableLiveData<Result<ArrayList<BaseCarsListItem>>>) :
+  class CarsDisposable(private val liveData: SingleLiveEvent<Result<ArrayList<BaseCarsListItem>>>) :
     BaseDisposableSingle<ArrayList<BaseCarsListItem>>() {
     override fun onSuccess(success: Result<ArrayList<BaseCarsListItem>>) {
       liveData.value = success

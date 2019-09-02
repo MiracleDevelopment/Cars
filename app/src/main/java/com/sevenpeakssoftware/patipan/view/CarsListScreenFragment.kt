@@ -18,6 +18,7 @@ import com.sevenpeakssoftware.patipan.base.BaseFragment
 import com.sevenpeakssoftware.patipan.shared.success
 import com.sevenpeakssoftware.patipan.utils.NetworkUtils
 import com.sevenpeakssoftware.patipan.view.adapter.CarsListAdapter
+import com.sevenpeakssoftware.patipan.view.adapter.OnCarsListenerItem
 import com.sevenpeakssoftware.patipan.view.viewmodel.CarsListScreenViewModel
 import kotlinx.android.synthetic.main.cars_list_screen_fragment.*
 import org.koin.android.ext.android.inject
@@ -41,10 +42,18 @@ class CarsListScreenFragment : BaseFragment() {
     }
   }
 
+  private val onCarsListenerItem = object : OnCarsListenerItem{
+    override fun onRetryAgain() {
+      showSnackBar(view,getString(R.string.message_loading))
+      carsListScreenViewModel.executeCarsList(NetworkUtils.checkNetworkUtils(context))
+    }
+  }
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
     savedInstanceState ?: run {
+      showSnackBar(view,getString(R.string.message_loading))
       carsListScreenViewModel.executeCarsList(NetworkUtils.checkNetworkUtils(context))
     }
 
@@ -76,6 +85,7 @@ class CarsListScreenFragment : BaseFragment() {
       LinearLayoutManager(context, RecyclerView.VERTICAL, false)
     carsListScreenFragmentRecyclerView.itemAnimator = DefaultItemAnimator()
     carsListScreenFragmentRecyclerView.adapter = carsListAdapter
+    carsListAdapter.setOnCarsListenerItem(onCarsListenerItem)
   }
 
   private fun setObserve() {
@@ -102,8 +112,9 @@ class CarsListScreenFragment : BaseFragment() {
   }
 
   private fun showSnackBar(view: View?, message: String) {
-    Snackbar.make(view ?: return, message, Snackbar.LENGTH_SHORT).show()
+    Snackbar.make(view ?: return, message, Snackbar.LENGTH_LONG).show()
   }
+
 
   companion object {
     const val tagFragment: String = "carsListScreenFragment"
