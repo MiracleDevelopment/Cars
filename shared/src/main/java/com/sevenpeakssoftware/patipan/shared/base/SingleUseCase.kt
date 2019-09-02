@@ -1,7 +1,6 @@
 package com.sevenpeakssoftware.patipan.shared.base
 
 import com.eggdigital.shared.domain.executor.PostExecutionThread
-import com.eggdigital.shared.domain.executor.ThreadExecutor
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable

@@ -1,6 +1,9 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+
 android {
     compileSdkVersion 28
     buildToolsVersion "29.0.2"
@@ -44,10 +47,24 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:2.2.8"
     implementation "io.reactivex.rxjava2:rxandroid:2.0.2"
 
+    //Koin Injection
+    implementation "org.koin:koin-core:2.0.1"
+    implementation "org.koin:koin-core-ext:2.0.1"
+    implementation "org.koin:koin-android:2.0.1"
+    implementation "org.koin:koin-androidx-scope:2.0.1"
+    implementation "org.koin:koin-androidx-viewmodel:2.0.1"
+
     //Stetho
     implementation('com.facebook.stetho:stetho-okhttp3:1.5.0') {
         exclude group: 'com.google.code.findbugs'
     }
+
+    //Room
+    implementation "androidx.room:room-runtime:2.1.0"
+    implementation "androidx.room:room-rxjava2:2.1.0"
+    kapt "androidx.room:room-compiler:2.1.0"
+    testImplementation "androidx.room:room-testing:2.1.0"
+
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'

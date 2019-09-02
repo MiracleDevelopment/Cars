@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Cars</string>
+    
+    <string name="error_message_internet_loss">Internet Loss</string>
+    <string name="error_message_internet_connection">Internet Connected</string>
+    <string name="error_message_internet_please_connection">Please Connect Internet</string>
+
+    <string name="empty_message">No Item</string>
+    <string name="retry_connected_again">Retry Again</string>
+    <string name="message_loading">Loading…</string>
 </resources>
