@@ -46,9 +46,5 @@ proguard/
 # Eclipse Metadata
 .metadata/
 
-# Keystore files
-*.jks
-
-keystore.properties
 
 
